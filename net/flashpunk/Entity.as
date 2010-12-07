@@ -489,7 +489,7 @@ package net.flashpunk
 			if (graphic is Graphiclist) (graphic as Graphiclist).add(g);
 			else
 			{
-				var list:Graphiclist = new Graphiclist;
+				var list:Graphiclist = new Graphiclist(g);
 				if (graphic) list.add(graphic);
 				graphic = list;
 			}
