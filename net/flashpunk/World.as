@@ -219,7 +219,8 @@
 				e._recycleNext = null;
 			}
 			else e = new classType;
-			if (addToWorld) return add(e);
+			if (addToWorld) add(e);
+			e.created();
 			return e;
 		}
 		

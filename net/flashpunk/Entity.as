@@ -85,6 +85,14 @@ package net.flashpunk
 		}
 		
 		/**
+		 * Override this, called when the Entity has been created via World.create().
+		 */
+		public function created():void
+		{
+			
+		}
+		
+		/**
 		 * Override this, called when the Entity is removed from a World.
 		 */
 		public function removed():void
