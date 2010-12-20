@@ -108,10 +108,10 @@
 		 * @param	loop		If the animation should loop.
 		 * @return	A new Anim object for the animation.
 		 */
-		public function add(name:String, frames:Array, frameRate:Number = 0, loop:Boolean = true):Anim
+		public function add(name:String, frames:Array, frameRate:Number = 0, loop:Boolean = true, flipped:Boolean = false):Anim
 		{
 			if (_anims[name]) throw new Error("Cannot have multiple animations with the same name");
-			(_anims[name] = new Anim(name, frames, frameRate, loop))._parent = this;
+			(_anims[name] = new Anim(name, frames, frameRate, loop, flipped))._parent = this;
 			return _anims[name];
 		}
 		
@@ -130,6 +130,7 @@
 				_frame = _index = 0;
 				complete = true;
 				updateBuffer();
+				flipped = false;
 				return null;
 			}
 			_index = 0;
@@ -137,6 +138,7 @@
 			_frame = uint(_anim._frames[0]);
 			complete = false;
 			updateBuffer();
+			flipped = _anim.flipped;
 			return _anim;
 		}
 		
