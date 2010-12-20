@@ -612,12 +612,13 @@ package net.flashpunk
 		 * @param	solidType	An optional collision type to stop flush against upon collision.
 		 * @param	sweep		If sweeping should be used (prevents fast-moving objects from going through solidType).
 		 */
-		public function moveBy(x:Number, y:Number, solidType:String = null, sweep:Boolean = false):void
+		public function moveBy(x:Number, y:Number, solidType:String = null, sweep:Boolean = false):Boolean
 		{
 			_moveX += x;
 			_moveY += y;
 			x = Math.round(_moveX);
 			y = Math.round(_moveY);
+			if (x === 0 && y === 0) return false;
 			_moveX -= x;
 			_moveY -= y;
 			if (solidType)
@@ -671,6 +672,7 @@ package net.flashpunk
 				this.x += x;
 				this.y += y;
 			}
+			return true;
 		}
 		
 		/**
