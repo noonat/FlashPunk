@@ -56,6 +56,16 @@
 		public static var elapsed:Number;
 		
 		/**
+		 * Total time elapsed since the world was started.
+		 */
+		public static var worldTime:Number;
+		
+		/**
+		* Seconds value of flash.utils.getTimer().
+		*/
+		public static var time:Number;
+		
+		/**
 		 * Timescale applied to FP.elapsed (non-fixed framerate only).
 		 */
 		public static var rate:Number = 1;
