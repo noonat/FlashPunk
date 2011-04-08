@@ -32,7 +32,7 @@ package net.flashpunk
 		}
 		
 		/**
-		 * Override this, called when the Component is removed from an entity.
+		 * Override this, called when the Component is added to an entity.
 		 */
 		public function added():void
 		{
@@ -48,9 +48,9 @@ package net.flashpunk
 		}
 		
 		/**
-		 * Override this, called when the Component is added to an Entity.
+		 * Override this, called when the Component is removed from an Entity.
 		 */
-		public function removed():void
+		public function removed(entity:Entity):void
 		{
 			
 		}
@@ -58,7 +58,7 @@ package net.flashpunk
 		/**
 		 * Override this, called when the parent Entity is removed from the world.
 		 */
-		public function removedFromWorld():void
+		public function removedFromWorld(world:World):void
 		{
 			
 		}
@@ -80,7 +80,7 @@ package net.flashpunk
 		 */
 		public function reset():void
 		{
-			active = visible = true;
+			
 		}
 		
 		/**

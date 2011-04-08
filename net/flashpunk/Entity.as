@@ -102,7 +102,7 @@ package net.flashpunk
 		{
 			for each (var component:Component in _components)
 			{
-				component.removedFromWorld();
+				component.removedFromWorld(world);
 			}
 		}
 		
@@ -791,15 +791,10 @@ package net.flashpunk
 		 * @param	component		Component to add.
 		 * @return	The component that was added.
 		 */
-		public function setComponent(name:String, component:Component):Component
+		public function addComponent(name:String, component:Component):Component
 		{
 			if (!_components) _components = new Dictionary();
-			var oldComponent:Component = _components[name];
-			if (oldComponent)
-			{
-				oldComponent.removed();
-				oldComponent.entity = null;
-			}
+			removeComponent(name);
 			_components[name] = component;
 			if (component)
 			{
@@ -828,6 +823,26 @@ package net.flashpunk
 			return _components ? _components.hasOwnProperty(name) : false;
 		}
 		
+		/**
+		 * Remove a component by name.
+		 * @param	name		Name of the component.
+		 * @return	The component that was removed, or null if the entity didn't have a component by that name.
+		 */
+		public function removeComponent(name:String):Component
+		{
+			var component:Component = _components[name];
+			if (component)
+			{
+				component.removed(this);
+				component.entity = null;
+				delete _components[name];
+			}
+			return component;
+		}
+		
+		/**
+		 * Call reset() on all the Entity's components.
+		 */
 		public function resetComponents():void
 		{
 			for each (var component:Component in _components)
