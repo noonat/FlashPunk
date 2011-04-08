@@ -98,7 +98,7 @@ package net.flashpunk
 		/**
 		 * Override this, called when the Entity is removed from a World.
 		 */
-		public function removed():void
+		public function removed(world:World):void
 		{
 			for each (var component:Component in _components)
 			{

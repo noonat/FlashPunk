@@ -934,7 +934,7 @@
 						continue;
 					}
 					e._added = false;
-					e.removed();
+					e.removed(this);
 					removeUpdate(e);
 					removeRender(e);
 					if (e._type) removeType(e);
