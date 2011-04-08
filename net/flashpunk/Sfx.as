@@ -33,9 +33,13 @@
 		 * Plays the sound once.
 		 * @param	vol		Volume factor, a value from 0 to 1.
 		 * @param	pan		Panning factor, a value from -1 to 1.
+		 * @param	minElapsed		Only play if this much time has passed since its last play.
 		 */
-		public function play(vol:Number = 1, pan:Number = 0):void
+		public function play(vol:Number = 1, pan:Number = 0, minElapsed:Number = 0):void
 		{
+			var elapsed:Number = FP.time - (_times[_sound] || 0);
+			if (elapsed < minElapsed) return;
+			_times[_sound] = FP.time;
 			if (_channel) stop();
 			_vol = _transform.volume = vol < 0 ? 0 : vol;
 			_pan = _transform.pan = pan < -1 ? -1 : (pan > 1 ? 1 : pan);
@@ -129,7 +133,7 @@
 		 */
 		public function get length():Number { return _sound.length / 1000; }
 		
-		// Sound infromation.
+		// Sound information.
 		/** @private */ private var _vol:Number = 1;
 		/** @private */ private var _pan:Number = 0;
 		/** @private */ private var _sound:Sound;
@@ -140,5 +144,6 @@
 		
 		// Stored Sound objects.
 		/** @private */ private static var _sounds:Dictionary = new Dictionary;
+		/** @private */ private static var _times:Dictionary = new Dictionary;
 	}
 }
