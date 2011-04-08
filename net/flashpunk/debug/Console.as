@@ -26,7 +26,7 @@ package net.flashpunk.debug
 		/**
 		 * The key used to toggle the Console on/off. Tilde (~) by default.
 		 */
-		public var toggleKey:uint = 192;
+		public var toggleKey:uint = Key.TILDE;
 		
 		/**
 		 * Constructor.
