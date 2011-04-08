@@ -83,13 +83,13 @@
 							if (_anim._loop)
 							{
 								_index = 0;
-								if (callback != null) callback();
+								if (callback != null) callback(this);
 							}
 							else
 							{
 								_index = _anim._frameCount - 1;
 								complete = true;
-								if (callback != null) callback();
+								if (callback != null) callback(this);
 								break;
 							}
 						}
