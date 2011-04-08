@@ -290,8 +290,16 @@
 		 */
 		public function get clipRect():Rectangle { return _sourceRect; }
 		
-		/** @private Source BitmapData image. */
-		protected function get source():BitmapData { return _source; }
+		/**
+		 * Source BitmapData image.
+		 */
+		public function get source():BitmapData { return _source; }
+		public function set source(source:BitmapData):void
+		{
+			if (source is BitmapData) _source = source;
+			if (!_source) throw new Error("Invalid source image.");
+			updateBuffer();
+		}
 		
 		// Source and buffer information.
 		/** @private */ protected var _source:BitmapData;
