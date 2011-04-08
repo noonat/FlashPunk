@@ -1,4 +1,4 @@
-﻿This is a fork of the official FlashPunk repo.
+﻿This is a fork of the [official FlashPunk repo](https://github.com/ChevyRay/FlashPunk/).
 
 You can learn more about FlashPunk at
 [http://flashpunk.net](http://flashpunk.net).
@@ -15,8 +15,7 @@ ADDITIONS
     -- Added `FP.worldTime` (seconds since world started).
     -- Added `FP.time` (absolute time in seconds, from Flash's getTimer).
 - `Image` class:
-    -- Added `lock()`/`unlock()` to defer buffer updates, for a performance
-       boost when updating many image properties.
+    -- Added `lock()`/`unlock()` to defer buffer updates, for a performance boost when updating many image properties.
 - `Screen` class:
     -- Optional alpha, so you can layer other DisplayObjects under FP.
 - `Sfx` class:
@@ -27,8 +26,7 @@ ADDITIONS
 - `Tilemap` class:
     -- Added `createGrid()` to create a mask from tile indexes.
 - `Tween` class:
-    -- Added public `updateTween()`, so you can tick tween objects manually
-       from `Graphic` classes.
+    -- Added public `updateTween()`, so you can tick tween objects manually from `Graphic` classes.
 
 BUGFIXES
 ========
