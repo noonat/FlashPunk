@@ -87,6 +87,22 @@
 		}
 		
 		/**
+		 * Override this; called when game gains focus.
+		 */
+		public function focusGained():void
+		{
+			
+		}
+		
+		/**
+		 * Override this; called when game loses focus.
+		 */
+		public function focusLost():void
+		{
+			
+		}
+		
+		/**
 		 * X position of the mouse in the World.
 		 */
 		public function get mouseX():int
@@ -235,7 +251,7 @@
 		 * Clears stored reycled Entities of the Class type.
 		 * @param	classType		The Class type to clear.
 		 */
-		public function clearRecycled(classType:Class):void
+		public static function clearRecycled(classType:Class):void
 		{
 			var e:Entity = _recycled[classType],
 				n:Entity;
@@ -251,7 +267,7 @@
 		/**
 		 * Clears stored recycled Entities of all Class types.
 		 */
-		public function clearRecycledAll():void
+		public static function clearRecycledAll():void
 		{
 			for (var classType:Object in _recycled) clearRecycled(classType as Class);
 		}
@@ -1186,7 +1202,7 @@
 		/** @private */	private var _classCount:Dictionary = new Dictionary;
 		/** @private */	internal var _typeFirst:Object = { };
 		/** @private */	private var _typeCount:Object = { };
-		/** @private */	private var _recycled:Dictionary = new Dictionary;
+		/** @private */	private static var _recycled:Dictionary = new Dictionary;
 		/** @private */	internal var _entityNames:Dictionary = new Dictionary;
 	}
 }

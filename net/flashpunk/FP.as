@@ -14,6 +14,7 @@
 	import net.flashpunk.*;
 	import net.flashpunk.debug.Console;
 	import net.flashpunk.tweens.misc.MultiVarTween;
+	import net.flashpunk.tweens.misc.Alarm;
 	
 	/**
 	 * Static catch-all class used to access global properties and functions.
@@ -89,6 +90,16 @@
 		 * Point used to determine drawing offset in the render loop.
 		 */
 		public static var camera:Point = new Point;
+		
+		/**
+		 * Global Tweener for tweening values across multiple worlds.
+		 */
+		public static var tweener:Tweener = new Tweener;
+		
+		/**
+		 * If the game currently has input focus or not. Note: may not be correct initially.
+		 */
+		public static var focused:Boolean = true;
 		
 		/**
 		 * Half the screen width.
@@ -312,6 +323,22 @@
 		{
 			if (relative) angle += FP.angle(anchor.x, anchor.y, object.x, object.y);
 			FP.angleXY(object, angle, FP.distance(anchor.x, anchor.y, object.x, object.y), anchor.x, anchor.y);
+		}
+		
+		/**
+		 * Gets the difference of two angles, wrapped around to the range -180 to 180.
+		 * @param	a		First angle in degrees.
+		 * @param	b		Second angle in degrees.
+		 * @return	Difference in angles, wrapped around to the range -180 to 180.
+		 */
+		public static function angleDiff(a:Number, b:Number):Number
+		{
+			var diff:Number = b - a;
+			
+			while (diff > 180) { diff -= 360; }
+			while (diff <= -180) { diff += 360; }
+			
+			return diff;
 		}
 		
 		/**
@@ -706,7 +733,7 @@
 			var type:uint = Tween.ONESHOT,
 				complete:Function = null,
 				ease:Function = null,
-				tweener:Tweener = FP.world;
+				tweener:Tweener = FP.tweener;
 			if (object is Tweener) tweener = object as Tweener;
 			if (options)
 			{
@@ -719,6 +746,27 @@
 			tween.tween(object, values, duration, ease);
 			tweener.addTween(tween);
 			return tween;
+		}
+		
+		/**
+		 * Schedules a callback for the future. Shorthand for creating an Alarm tween, starting it and adding it to a Tweener.
+		 * @param	delay		The duration to wait before calling the callback.
+		 * @param	callback	The function to be called.
+		 * @param	type		The tween type (PERSIST, LOOPING or ONESHOT). Defaults to ONESHOT.
+		 * @param	tweener		The Tweener object to add this Alarm to. Defaults to FP.tweener.
+		 * @return	The added Alarm object.
+		 * 
+		 * Example: FP.alarm(5.0, callbackFunction, Tween.LOOPING); // Calls callbackFunction every 5 seconds
+		 */
+		public static function alarm(delay:Number, callback:Function, type:uint = 2, tweener:Tweener = null):Alarm
+		{
+			if (! tweener) tweener = FP.tweener;
+			
+			var alarm:Alarm = new Alarm(delay, callback, type);
+			
+			tweener.addTween(alarm, true);
+			
+			return alarm;
 		}
 		
 		/**

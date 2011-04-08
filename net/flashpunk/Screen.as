@@ -225,7 +225,7 @@
 		/** @private */ private var _scaleY:Number = 1;
 		/** @private */ private var _scale:Number = 1;
 		/** @private */ private var _angle:Number = 0;
-		/** @private */ private var _color:uint = 0x202020;
+		/** @private */ private var _color:uint = 0xFF202020;
 		/** @private */ private var _alpha:Number = 1.0;
 	}
 }

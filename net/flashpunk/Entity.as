@@ -533,6 +533,7 @@ package net.flashpunk
 			{
 				var list:Graphiclist = new Graphiclist(g);
 				if (graphic) list.add(graphic);
+				list.add(g);
 				graphic = list;
 			}
 			return g;
@@ -667,14 +668,11 @@ package net.flashpunk
 						{
 							if ((e = collide(solidType, this.x + sign, this.y)))
 							{
-								moveCollideX(e);
-								break;
+								if (moveCollideX(e)) break;
+								else this.x += sign;
 							}
-							else
-							{
-								this.x += sign;
-								x -= sign;
-							}
+							else this.x += sign;
+							x -= sign;
 						}
 					}
 					else this.x += x;
@@ -688,14 +686,11 @@ package net.flashpunk
 						{
 							if ((e = collide(solidType, this.x, this.y + sign)))
 							{
-								moveCollideY(e);
-								break;
+								if (moveCollideY(e)) break;
+								else this.y += sign;
 							}
-							else
-							{
-								this.y += sign;
-								y -= sign;
-							}
+							else this.y += sign;
+							y -= sign;
 						}
 					}
 					else this.y += y;
@@ -741,18 +736,18 @@ package net.flashpunk
 		 * When you collide with an Entity on the x-axis with moveTo() or moveBy().
 		 * @param	e		The Entity you collided with.
 		 */
-		public function moveCollideX(e:Entity):void
+		public function moveCollideX(e:Entity):Boolean
 		{
-			
+			return true;
 		}
 		
 		/**
 		 * When you collide with an Entity on the y-axis with moveTo() or moveBy().
 		 * @param	e		The Entity you collided with.
 		 */
-		public function moveCollideY(e:Entity):void
+		public function moveCollideY(e:Entity):Boolean
 		{
-			
+			return true;
 		}
 		
 		/**
