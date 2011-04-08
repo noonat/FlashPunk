@@ -278,6 +278,16 @@
 		}
 		
 		/**
+		 * Normalizes an angle to 0 - 360 range.
+		 * @param	angle		Angle to normalize.
+		 */
+		public static function normalizeAngle(angle:Number):Number
+		{
+			angle %= 360;
+			return angle < 0 ? angle + 360 : angle;
+		}
+		
+		/**
 		 * Sets the x/y values of the provided object to a vector of the specified angle and length.
 		 * @param	object		The object whose x/y properties should be set.
 		 * @param	angle		The angle of the vector, in degrees.
