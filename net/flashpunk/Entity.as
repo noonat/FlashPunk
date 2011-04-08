@@ -111,6 +111,8 @@ package net.flashpunk
 		 */
 		override public function update():void 
 		{
+			if (!_world) return;
+			
 			for each (var component:Component in _components)
 			{
 				if (component.active) component.update();
@@ -123,6 +125,8 @@ package net.flashpunk
 		 */
 		public function render():void 
 		{
+			if (!_world) return;
+			
 			for each (var component:Component in _components)
 			{
 				if (component.visible)

@@ -55,7 +55,7 @@
 			var e:Entity = _updateFirst;
 			while (e)
 			{
-				if (e.active)
+				if (e.world && e.active)
 				{
 					if (e._tween) e.updateTweens();
 					e.update();
@@ -80,7 +80,7 @@
 				e = _renderLast[_layerList[i]];
 				while (e)
 				{
-					if (e.visible) e.render();
+					if (e.world && e.visible) e.render();
 					e = e._renderPrev;
 				}
 			}
