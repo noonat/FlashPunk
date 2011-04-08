@@ -2,7 +2,7 @@ require 'rake/clean'
 
 verbose true
 
-task :default => 'swc:debug'
+task :default => :examples
 
 namespace :swc do
   src_files = FileList['net/**/*.as'].each do |src_file|
@@ -25,10 +25,12 @@ namespace :swc do
 end
 
 desc "Build *all* the examples?!"
-task :examples => ['swc:debug', :sounds]
+task :examples => :sounds
+CLEAN << FileList['examples/**/bin/*.{swf,swf.cache}']
 FileList['examples/**/src/Main.as'].each do |input_file|
   output_file = input_file.pathmap('%{src,bin}d/%{.*,*}n.swf') { |n| n.downcase }
   input_deps = FileList[input_file.pathmap '%X/**/*.as'].to_a
+  input_deps << 'swc:debug'
   file output_file => input_deps do
     mxmlc input_file, output_file, mxmlc_opts({
       :library_paths => ['bin/flashpunk_debug.swc'],
