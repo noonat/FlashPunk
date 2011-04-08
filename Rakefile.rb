@@ -65,7 +65,6 @@ end
 def compc_opts(opts={})
   {
     :debug => true,
-    :incremental => true,
     :source_paths => ['.'],
     :static => false
   }.merge(opts)
@@ -84,7 +83,6 @@ def mxmlc_opts(opts={})
     :bgcolor => '#ffffff',
     :size => '800 600 ',
     :debug => true,
-    :incremental => true,
     :library_paths => [],
     :source_paths => ['.'],
     :static => true
