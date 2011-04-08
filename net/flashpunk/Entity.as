@@ -786,8 +786,12 @@ package net.flashpunk
 		public function get name():String { return _name; }
 		public function set name(value:String):void
 		{
-			_name = value;
-			if (_world) _world.registerName(this);
+			if (_name !== value)
+			{
+				if (_name && _world) _world.unregisterName(this);
+				_name = value;
+				if (_name && _world) _world.registerName(this);
+			}
 		}
 		
 		/**

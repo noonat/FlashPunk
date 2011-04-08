@@ -904,13 +904,10 @@
 		{
 			if (name)
 			{
-				for (var i:Object in _entityNames)
+				var entities:Array = _entityNames[name];
+				for each (var e:Entity in entities)
 				{
-					if (_entityNames[i] == name)
-					{
-						if (i._world == this) return i;
-						else delete _entityNames[i];
-					}
+					if (e && e._world === this) return e;
 				}
 			}
 			return null;
@@ -1079,14 +1076,26 @@
 		/** @private Register's the Entity's instance name. */
 		internal function registerName(e:Entity):void
 		{
-			if (e._name) _entityNames[e] = e._name;
-			else unregisterName(e);
+			var entities:Array = _entityNames[e._name];
+			if (entities)
+			{
+				if (entities.indexOf(e) === -1)
+				{
+					entities[entities.length] = e;
+				}
+			}
+			else _entityNames[e._name] = [e];
 		}
 		
 		/** @private Unregister's the Entity's instance name. */
 		internal function unregisterName(e:Entity):void
 		{
-			if (_entityNames[e]) delete _entityNames[e];
+			var entities:Array = _entityNames[e._name];
+			if (entities)
+			{
+				var index:int = entities.indexOf(e);
+				if (index !== -1) entities.splice(index, 1);
+			}
 		}
 		
 		/** @private Calculates the squared distance between two rectangles. */
