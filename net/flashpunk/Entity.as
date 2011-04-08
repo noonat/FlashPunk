@@ -836,6 +836,21 @@ package net.flashpunk
 			}
 		}
 		
+		/**
+		 * Get the class of this entity.
+		 */
+		public function getClass():Class { return _class; }
+		
+		/**
+		 * Next entity of the same type.
+		 */
+		public function get typeNext():Entity { return _typeNext; }
+		
+		/**
+		 * Next entity in the update list.
+		 */
+		public function get updateNext():Entity { return _updateNext; }
+		
 		// Entity information.
 		/** @private */ internal var _class:Class;
 		/** @private */ internal var _world:World;
