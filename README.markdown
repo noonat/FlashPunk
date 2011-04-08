@@ -29,6 +29,7 @@ ADDITIONS
     * Added public `updateTween()`, so you can tick tween objects manually from `Graphic` classes.
 
 I've also merged goodness from these fine fellows:
+
 - [blckknght]
 - [draknek]
 - [rolpege]
