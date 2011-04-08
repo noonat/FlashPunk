@@ -1,0 +1,5 @@
+bin/*.swc
+bin/*.cache
+examples/*/bin/*.swf
+examples/*/bin/*.cache
+
