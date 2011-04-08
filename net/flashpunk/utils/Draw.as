@@ -188,6 +188,35 @@
 			_graphics.clear();
 			_graphics.beginFill(color, alpha);
 			_graphics.drawRect(x - _camera.x, y - _camera.y, width, height);
+			_graphics.endFill();
+			_target.draw(FP.sprite, null, null, blend);
+		}
+		
+		/**
+		 * Draws a rectangle to the screen.
+		 * @param	x			X position of the rectangle.
+		 * @param	y			Y position of the rectangle.
+		 * @param	width		Width of the rectangle.
+		 * @param	height		Height of the rectangle.
+		 * @param	color		Color of the rectangle.
+		 * @param	alpha		Alpha of the rectangle.
+		 * @param	fill		If the rectangle should be filled with the color (true) or just an outline (false).
+		 * @param	thick		How thick the outline should be (only applicable when fill = false).
+		 */
+		public static function rectPlus(x:int, y:int, width:uint, height:uint, color:uint = 0xFFFFFF, alpha:Number = 1, fill:Boolean = true, thick:int = 1):void
+		{
+			_graphics.clear();
+			if (fill)
+			{
+				_graphics.beginFill(color & 0xFFFFFF, alpha);
+				_graphics.drawRect(x - _camera.x, y - _camera.y, width, height);
+				_graphics.endFill();
+			}
+			else
+			{
+				_graphics.lineStyle(thick, color & 0xFFFFFF, alpha);
+				_graphics.drawRect(x - _camera.x, y - _camera.y, width, height);
+			}
 			_target.draw(FP.sprite, null, null, blend);
 		}
 		
