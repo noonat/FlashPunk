@@ -29,7 +29,7 @@ task :examples => :sounds
 CLEAN << FileList['examples/**/bin/*.{swf,swf.cache}']
 FileList['examples/**/src/Main.as'].each do |input_file|
   output_file = input_file.pathmap('%{src,bin}d/%{.*,*}n.swf') { |n| n.downcase }
-  input_deps = FileList[input_file.pathmap '%X/**/*.as'].to_a
+  input_deps = FileList[input_file.pathmap '%d/**/*.as'].to_a
   input_deps << 'swc:debug'
   file output_file => input_deps do
     mxmlc input_file, output_file, mxmlc_opts({
