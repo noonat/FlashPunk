@@ -39,12 +39,25 @@
 		 * @param	complete		Optional callback for when the Tween completes.
 		 * @param	ease			Optional easer function to apply to the Tweened value.
 		 */
-		public function Tween(duration:Number, type:uint = 0, complete:Function = null, ease:Function = null) 
+		public function Tween(duration:Number, type:uint = 0, complete:Function = null, ease:Function = null)
 		{
 			_target = duration;
 			_type = type;
 			this.complete = complete;
 			_ease = ease;
+		}
+		
+		/**
+		 * Updates the Tween, and calls finish() if required, so a tween can be
+		 * updated without being added to a Tweener.
+		 */
+		public function updateTween():void
+		{
+			if (active)
+			{
+				update();
+				if (_finish) finish();
+			}
 		}
 		
 		/**
@@ -94,7 +107,7 @@
 				case 2:
 					_time = _target;
 					active = false;
-					_parent.removeTween(this);
+					if (_parent) _parent.removeTween(this);
 					break;
 			}
 			_finish = false;
