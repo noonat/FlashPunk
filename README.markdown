@@ -9,26 +9,26 @@ ADDITIONS
 - **Components**, for reusable entity functionality.
 - **Signals**, for lightweight events attached to objects.
 - `Entity` class:
--- Added `created()`, like added, but called by `world.create()`.
--- Made `moveBy()` return `true` when it actually moves the entity.
+    -- Added `created()`, like added, but called by `world.create()`.
+    -- Made `moveBy()` return `true` when it actually moves the entity.
 - `FP` class:
--- Added `FP.worldTime` (seconds since world started).
--- Added `FP.time` (absolute time in seconds, from Flash's getTimer).
+    -- Added `FP.worldTime` (seconds since world started).
+    -- Added `FP.time` (absolute time in seconds, from Flash's getTimer).
 - `Image` class:
--- Added `lock()`/`unlock()` to defer buffer updates, for a performance boost
-   when updating many image properties.
+    -- Added `lock()`/`unlock()` to defer buffer updates, for a performance
+       boost when updating many image properties.
 - `Screen` class:
--- Optional alpha, so you can layer other DisplayObjects under FP.
+    -- Optional alpha, so you can layer other DisplayObjects under FP.
 - `Sfx` class:
--- Added a `minElapsed` argument to `play()` to rate limit a sound.
+    -- Added a `minElapsed` argument to `play()` to rate limit a sound.
 - `Spritemap` class:
--- Animations can be flipped.
--- Added an `animCount` property.
+    -- Animations can be flipped.
+    -- Added an `animCount` property.
 - `Tilemap` class:
--- Added `createGrid()` to create a mask from tile indexes.
+    -- Added `createGrid()` to create a mask from tile indexes.
 - `Tween` class:
--- Added public `updateTween()`, so you can tick tween objects manually from
-   `Graphic` classes.
+    -- Added public `updateTween()`, so you can tick tween objects manually
+       from `Graphic` classes.
 
 BUGFIXES
 ========
