@@ -60,6 +60,11 @@ package net.flashpunk
 		public var renderTarget:BitmapData;
 		
 		/**
+		 * General use flags, for finer distinction than a broad type name.
+		 */
+		public var flags:uint = 0;
+		
+		/**
 		 * Constructor. Can be usd to place the Entity and assign a graphic and mask.
 		 * @param	x			X position to place the Entity.
 		 * @param	y			Y position to place the Entity.
@@ -849,6 +854,38 @@ package net.flashpunk
 			{
 				component.reset();
 			}
+		}
+		
+		/**
+		 * Add the given flags to this entity's flags.
+		 */
+		public function addFlags(flags:uint):void
+		{
+			this.flags |= flags;
+		}
+		
+		/**
+		 * Remove the given flags from this entity's flags.
+		 */
+		public function removeFlags(flags:uint):void
+		{
+			this.flags &= ~flags;
+		}
+		
+		/**
+		 * Return true if all the given flags are set.
+		 */
+		public function hasFlags(flags:uint):Boolean
+		{
+			return (this.flags & flags) === flags;
+		}
+		
+		/**
+		 * Return true if any of the given flags are set.
+		 */
+		public function hasAnyFlags(flags:uint):Boolean
+		{
+			return (this.flags & flags) !== 0;
 		}
 		
 		/**
