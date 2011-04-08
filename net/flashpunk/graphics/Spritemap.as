@@ -112,6 +112,7 @@
 		{
 			if (_anims[name]) throw new Error("Cannot have multiple animations with the same name");
 			(_anims[name] = new Anim(name, frames, frameRate, loop, flipped))._parent = this;
+			++_animCount;
 			return _anims[name];
 		}
 		
@@ -238,6 +239,11 @@
 		 */
 		public function get currentAnim():String { return _anim ? _anim._name : ""; }
 		
+		/**
+		 * The number of animations in the Spritemap.
+		 */
+		public function get animCount():uint { return _animCount; }
+		
 		// Spritemap information.
 		/** @private */ protected var _rect:Rectangle;
 		/** @private */ protected var _width:uint;
@@ -247,6 +253,7 @@
 		/** @private */ private var _frameCount:uint;
 		/** @private */ private var _anims:Object = { };
 		/** @private */ private var _anim:Anim;
+		/** @private */ private var _animCount:uint = 0;
 		/** @private */ private var _index:uint;
 		/** @private */ protected var _frame:uint;
 		/** @private */ private var _timer:Number = 0;
