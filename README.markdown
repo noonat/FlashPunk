@@ -6,8 +6,8 @@ You can learn more about FlashPunk at
 ADDITIONS
 =========
 
-- **Components**, for reusable entity functionality.
-- **Signals**, for lightweight events attached to objects.
+- **[Components]**, for reusable entity functionality.
+- **[Signals]**, for lightweight events attached to objects.
 - Entity class:
     * Added `created()`, like added, but called by `world.create()`.
     * Made `moveBy()` return `true` when it actually moves the entity.
@@ -27,6 +27,12 @@ ADDITIONS
     * Added `createGrid()` to create a mask from tile indexes.
 - Tween class:
     * Added public `updateTween()`, so you can tick tween objects manually from `Graphic` classes.
+
+I've also merged goodness from these fine fellows:
+- [blckknght]
+- [draknek]
+- [rolpege]
+- [lukaszbruun]
 
 BUGFIXES
 ========
@@ -53,3 +59,10 @@ into the bin folder, and builds any projects in the examples folder.
 
 You don't *need* to do any of that, though. You can just copy the net folder
 into your project, like normal.
+
+[Components]: https://github.com/noonat/FlashPunk/wiki
+[Signals]: https://github.com/noonat/FlashPunk/wiki
+[blckknght]: https://github.com/BlckKnght/FlashPunk
+[draknek]: https://github.com/Draknek/FlashPunk
+[rolpege]: https://github.com/Rolpege/FlashPunk
+[lukaszbruun]: https://github.com/lukaszbruun/FlashPunk
