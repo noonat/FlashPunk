@@ -1,0 +1,19 @@
+<project>
+	<name>Draw Them Walls!</name>
+	<settings>
+		<defaultWidth>400</defaultWidth>
+		<defaultHeight>300</defaultHeight>
+		<maxWidth>2000</maxWidth>
+		<maxHeight>1500</maxHeight>
+		<workingDirectory></workingDirectory>
+	</settings>
+	<objects>
+		<object name="filler" image="filler.png" width="16" height="16"/>
+		<object name="wall" image="wall.png" width="16" height="16">
+			<nodes drawObject="true" limit="1000" lineMode="2"/>
+		</object>
+	</objects>
+	<layers>
+		<objects name="walls" gridSize="4" drawGridSize="8" />
+	</layers>
+</project>
