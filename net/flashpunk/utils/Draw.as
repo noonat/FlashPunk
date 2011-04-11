@@ -173,14 +173,24 @@
 		 * @param	color		Color of the rectangle.
 		 * @param	alpha		Alpha of the rectangle.
 		 */
-		public static function rect(x:Number, y:Number, width:Number, height:Number, color:uint = 0xFFFFFF, alpha:Number = 1):void
+		public static function rect(x:int, y:int, width:uint, height:uint, color:uint = 0xFFFFFF, alpha:Number = 1):void
 		{
-			color = (uint(alpha * 0xFF) << 24) | (color & 0xFFFFFF);
-			_rect.x = x - _camera.x;
-			_rect.y = y - _camera.y;
-			_rect.width = width;
-			_rect.height = height;
-			_target.fillRect(_rect, color);
+			if (alpha >= 1 && !blend)
+			{
+				if (color < 0xFF000000) color = 0xFF000000 | color;
+				_rect.x = x - _camera.x;
+				_rect.y = y - _camera.y;
+				_rect.width = width;
+				_rect.height = height;
+				_target.fillRect(_rect, color);
+				return;
+			}
+			if (color >= 0xFF000000) color = 0xFFFFFF & color;
+			_graphics.clear();
+			_graphics.beginFill(color, alpha);
+			_graphics.drawRect(x - _camera.x, y - _camera.y, width, height);
+			_graphics.endFill();
+			_target.draw(FP.sprite, null, null, blend);
 		}
 		
 		/**
