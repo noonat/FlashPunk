@@ -23,7 +23,7 @@
 		/**
 		 * Constructor.
 		 */
-		public function World() 
+		public function World()
 		{
 			
 		}
@@ -936,13 +936,10 @@
 				{
 					if (!e._world)
 					{
-						if(_add.indexOf(e) >= 0)
-							_add.splice(_add.indexOf(e), 1);
-						
+						if(_add.indexOf(e) >= 0) _add.splice(_add.indexOf(e), 1);
 						continue;
 					}
-					if (e._world !== this)
-						continue;
+					if (e._world !== this) continue;
 					
 					e.removed(this);
 					e._world = null;
@@ -961,8 +958,7 @@
 			{
 				for each (e in _add)
 				{
-					if (e._world)
-						continue;
+					if (e._world) continue;
 					
 					addUpdate(e);
 					addRender(e);
@@ -980,9 +976,7 @@
 			{
 				for each (e in _recycle)
 				{
-					if (e._world || e._recycleNext)
-						continue;
-					
+					if (e._world || e._recycleNext) continue;
 					e._recycleNext = _recycled[e._class];
 					_recycled[e._class] = e;
 				}

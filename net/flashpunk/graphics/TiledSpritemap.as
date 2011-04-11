@@ -28,7 +28,8 @@ package net.flashpunk.graphics
 		/** @private Creates the buffer. */
 		override protected function createBuffer():void 
 		{
-			if (_buffer) {
+			if (_buffer)
+			{
 				_buffer.dispose();
 				_buffer = null;
 			}

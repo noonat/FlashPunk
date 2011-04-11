@@ -3,7 +3,6 @@
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	
 	import net.flashpunk.FP;
 	import net.flashpunk.Graphic;
 	import net.flashpunk.masks.Grid;
@@ -161,12 +160,9 @@
 				column /= _tile.width;
 				row /= _tile.height;
 			}
-			
 			column %= _columns;
 			row %= _rows;
-			
 			_map.floodFill(column, row, index);
-			
 			updateAll();
 		}
 		

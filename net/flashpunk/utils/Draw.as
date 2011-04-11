@@ -193,21 +193,17 @@
 		 * @param	alpha		Alpha of the rectangle.
 		 * @param	fill		If the rectangle should be filled with the color (true) or just an outline (false).
 		 * @param	thick		How thick the outline should be (only applicable when fill = false).
-		 * @param	radius		Round rectangle corners by this amount.
+		 * @param	radius		Corners will be rounded by this amount.
 		 */
 		public static function rectPlus(x:Number, y:Number, width:Number, height:Number, color:uint = 0xFFFFFF, alpha:Number = 1, fill:Boolean = true, thick:Number = 1, radius:Number = 0):void
 		{
 			color &= 0xFFFFFF;
 			_graphics.clear();
-			
 			if (fill) _graphics.beginFill(color, alpha);
 			else _graphics.lineStyle(thick, color, alpha);
-			
 			if (radius <= 0) _graphics.drawRect(x - _camera.x, y - _camera.y, width, height);
 			else _graphics.drawRoundRect(x - _camera.x, y - _camera.y, width, height, radius);
-			
 			if (fill) _graphics.endFill();
-			
 			_target.draw(FP.sprite, null, null, blend);
 		}
 		
@@ -220,7 +216,7 @@
 		 */
 		public static function circle(x:int, y:int, radius:int, color:uint = 0xFFFFFF):void
 		{
-			if (color < 0xFF000000) color = 0xFF000000 | color;
+			color &= 0xFFFFFF;
 			x -= _camera.x;
 			y -= _camera.y;
 			var f:int = 1 - radius,
@@ -292,7 +288,7 @@
 		{
 			if (outline)
 			{
-				if (color < 0xFF000000) color = 0xFF000000 | color;
+				color |= 0xFF000000;
 				var x:int = e.x - e.originX - _camera.x,
 					y:int = e.y - e.originY - _camera.y;
 				_rect.x = x;
@@ -312,7 +308,7 @@
 			}
 			if (alpha >= 1 && !blend)
 			{
-				if (color < 0xFF000000) color = 0xFF000000 | color;
+				color |= 0xFF000000;
 				_rect.x = e.x - e.originX - _camera.x;
 				_rect.y = e.y - e.originY - _camera.y;
 				_rect.width = e.width;
@@ -320,7 +316,7 @@
 				_target.fillRect(_rect, color);
 				return;
 			}
-			if (color > 0xFFFFFF) color = 0xFFFFFF & color;
+			color &= 0xFFFFFF;
 			_graphics.clear();
 			_graphics.beginFill(color, alpha);
 			_graphics.drawRect(e.x - e.originX - _camera.x, e.y - e.originY - _camera.y, e.width, e.height);

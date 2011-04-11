@@ -47,7 +47,7 @@
 		 * @param	frameRate		The game framerate, in frames per second.
 		 * @param	fixed			If a fixed-framerate should be used.
 		 */
-		public function Engine(width:uint, height:uint, frameRate:Number = 60, fixed:Boolean = false) 
+		public function Engine(width:uint, height:uint, frameRate:Number = 60, fixed:Boolean = false)
 		{
 			// global game properties
 			FP.width = width;
@@ -296,14 +296,14 @@
 			FP._world.updateLists();
 		}
 		
-		private function onActivate (e:Event):void
+		private function onActivate(e:Event):void
 		{
 			FP.focused = true;
 			focusGained();
 			FP.world.focusGained();
 		}
 		
-		private function onDeactivate (e:Event):void
+		private function onDeactivate(e:Event):void
 		{
 			FP.focused = false;
 			focusLost();
@@ -315,8 +315,8 @@
 		/** @private */ private var _time:Number;
 		/** @private */ private var _last:Number;
 		/** @private */ private var _timer:Timer;
-		/** @private */ private var	_rate:Number;
-		/** @private */ private var	_skip:Number;
+		/** @private */ private var _rate:Number;
+		/** @private */ private var _skip:Number;
 		/** @private */ private var _prev:Number;
 		
 		// Debug timing information.

@@ -117,10 +117,14 @@
 			
 			if (options)
 			{
-				for (var property:String in options) {
-					if (hasOwnProperty(property)) {
+				for (var property:String in options)
+				{
+					if (hasOwnProperty(property))
+					{
 						this[property] = options[property];
-					} else {
+					}
+					else
+					{
 						throw new Error('"' + property + '" is not a property of Text');
 					}
 				}
@@ -161,17 +165,21 @@
 			
 			var offsetRequired: Boolean = false;
 			
-			for (var i: int = 0; i < _field.numLines; i++) {
+			for (var i: int = 0; i < _field.numLines; i++)
+			{
 				var tlm: TextLineMetrics = _field.getLineMetrics(i);
 				var remainder: Number = tlm.x % 1;
-				if (remainder > 0.1 && remainder < 0.9) {
+				if (remainder > 0.1 && remainder < 0.9)
+				{
 					offsetRequired = true;
 					break;
 				}
 			}
 			
-			if (offsetRequired) {
-				for (i = 0; i < _field.numLines; i++) {
+			if (offsetRequired)
+			{
+				for (i = 0; i < _field.numLines; i++)
+				{
 					tlm = _field.getLineMetrics(i);
 					remainder = tlm.x % 1;
 					_field.x = -remainder;
@@ -183,9 +191,8 @@
 					
 					_source.draw(_field, _field.transform.matrix, null, null, FP.rect);
 				}
-			} else {
-				_source.draw(_field);
 			}
+			else _source.draw(_field);
 			
 			super.updateBuffer();
 		}

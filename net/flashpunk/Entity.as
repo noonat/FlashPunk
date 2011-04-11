@@ -71,7 +71,7 @@ package net.flashpunk
 		 * @param	graphic		Graphic to assign to the Entity.
 		 * @param	mask		Mask to assign to the Entity.
 		 */
-		public function Entity(x:Number = 0, y:Number = 0, graphic:Graphic = null, mask:Mask = null) 
+		public function Entity(x:Number = 0, y:Number = 0, graphic:Graphic = null, mask:Mask = null)
 		{
 			this.x = x;
 			this.y = y;

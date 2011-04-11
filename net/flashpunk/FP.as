@@ -13,8 +13,8 @@
 	import flash.utils.getTimer;
 	import net.flashpunk.*;
 	import net.flashpunk.debug.Console;
-	import net.flashpunk.tweens.misc.MultiVarTween;
 	import net.flashpunk.tweens.misc.Alarm;
+	import net.flashpunk.tweens.misc.MultiVarTween;
 	
 	/**
 	 * Static catch-all class used to access global properties and functions.
@@ -62,8 +62,8 @@
 		public static var worldTime:Number;
 		
 		/**
-		* Seconds value of flash.utils.getTimer().
-		*/
+		 * Seconds value of flash.utils.getTimer().
+		 */
 		public static var time:Number;
 		
 		/**
@@ -220,8 +220,8 @@
 		 */
 		public static function colorLerp(fromColor:uint, toColor:uint, t:Number = 1):uint
 		{
-			if (t <= 0) { return fromColor; }
-			if (t >= 1) { return toColor; }
+			if (t <= 0) return fromColor;
+			if (t >= 1) return toColor;
 			var a:uint = fromColor >> 24 & 0xFF,
 				r:uint = fromColor >> 16 & 0xFF,
 				g:uint = fromColor >> 8 & 0xFF,
@@ -334,10 +334,8 @@
 		public static function angleDiff(a:Number, b:Number):Number
 		{
 			var diff:Number = b - a;
-			
-			while (diff > 180) { diff -= 360; }
-			while (diff <= -180) { diff += 360; }
-			
+			while (diff > 180) diff -= 360;
+			while (diff <= -180) diff += 360;
 			return diff;
 		}
 		
@@ -760,12 +758,9 @@
 		 */
 		public static function alarm(delay:Number, callback:Function, type:uint = 2, tweener:Tweener = null):Alarm
 		{
-			if (! tweener) tweener = FP.tweener;
-			
+			if (!tweener) tweener = FP.tweener;
 			var alarm:Alarm = new Alarm(delay, callback, type);
-			
 			tweener.addTween(alarm, true);
-			
 			return alarm;
 		}
 		

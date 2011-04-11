@@ -20,11 +20,12 @@
 		 * Creates a sound effect from an embedded source. Store a reference to
 		 * this object so that you can play the sound using play() or loop().
 		 * @param	source		The embedded sound class to use or a Sound object.
-		 * @param	complete	Optional callback function for when the sound finishes playing.
+		 * @param	complete		Optional callback function for when the sound finishes playing.
 		 */
 		public function Sfx(source:*, complete:Function = null) 
 		{
-			if (source is Class) {
+			if (source is Class)
+			{
 				_sound = _sounds[source];
 				if (!_sound) _sound = _sounds[source] = new source;
 			}

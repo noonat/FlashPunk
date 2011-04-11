@@ -13,10 +13,10 @@ package net.flashpunk.debug
 	import flash.system.System;
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
+	import net.flashpunk.graphics.Text;
 	import net.flashpunk.utils.Draw;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
-	import net.flashpunk.graphics.Text;
 	
 	/**
 	 * FlashPunk debug console; can use to log information or pause the game and view/move Entities and step the frame.
@@ -31,7 +31,7 @@ package net.flashpunk.debug
 		/**
 		 * Constructor.
 		 */
-		public function Console() 
+		public function Console()
 		{
 			Input.define("_ARROWS", Key.RIGHT, Key.LEFT, Key.DOWN, Key.UP);
 		}
@@ -714,7 +714,8 @@ package net.flashpunk.debug
 			_fpsInfoText1.text =
 				"Game: " + String(FP._gameTime) + "ms\n" + 
 				"Flash: " + String(FP._flashTime) + "ms";
-			_memReadText.text = "MEM: " + Number(System.totalMemory/1024/1024).toFixed(2) + "MB";
+			_memReadText.text =
+				"MEM: " + Number(System.totalMemory/1024/1024).toFixed(2) + "MB";
 		}
 		
 		/** @private Update the debug panel text. */

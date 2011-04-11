@@ -135,14 +135,14 @@
 		public function get scale():Number { return _t; }
 		
 		/**
-		* The target time of the Tween.
-		*/
+		 * The target time of the Tween.
+		 */
 		public function get target():Number { return _target; }
 		public function set target(value:Number):void { _target = value; }
 		
 		/**
-		* Tween type, one of Tween.PERSIST, Tween.LOOPING, or Tween.ONESHOT.
-		*/
+		 * Tween type, one of Tween.PERSIST, Tween.LOOPING, or Tween.ONESHOT.
+		 */
 		public function get type():uint { return _type; }
 		public function set type(value:uint):void { _type = value; }
 		

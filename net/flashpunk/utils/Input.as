@@ -207,11 +207,15 @@
 			if (mousePressed) mousePressed = false;
 			if (mouseReleased) mouseReleased = false;
 			
-			if (mouseCursor) {
-				if (mouseCursor == "hide") {
+			if (mouseCursor)
+			{
+				if (mouseCursor == "hide")
+				{
 					Mouse.hide();
 					Mouse.cursor = "auto";
-				} else {
+				}
+				else
+				{
 					Mouse.show();
 					Mouse.cursor = mouseCursor;
 				}

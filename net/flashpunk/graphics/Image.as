@@ -84,7 +84,8 @@
 		/** @private Creates the buffer. */
 		protected function createBuffer():void
 		{
-			if (_buffer) {
+			if (_buffer)
+			{
 				_buffer.dispose();
 				_buffer = null;
 			}
@@ -133,12 +134,9 @@
 		public static function createRect(width:uint, height:uint, color:uint = 0xFFFFFF, alpha:Number = 1):Image
 		{
 			var source:BitmapData = new BitmapData(width, height, true, 0xFFFFFFFF);
-			
 			var image:Image = new Image(source);
-			
 			image.color = color;
 			image.alpha = alpha;
-			
 			return image;
 		}
 		
@@ -354,14 +352,14 @@
 		// Color and alpha information.
 		/** @private */ private var _alpha:Number = 1;
 		/** @private */ private var _color:uint = 0x00FFFFFF;
-		/** @protected */ protected var _tint:ColorTransform;
+		/** @private */ protected var _tint:ColorTransform;
 		/** @private */ private var _colorTransform:ColorTransform = new ColorTransform;
 		/** @private */ private var _matrix:Matrix = FP.matrix;
 		
 		// Flipped image information.
-		/** @protected */ protected var _class:String;
-		/** @protected */ protected var _flipped:Boolean;
-		/** @protected */ protected var _flip:BitmapData;
-		/** @protected */ protected static var _flips:Object = { };
+		/** @private */ protected var _class:String;
+		/** @private */ protected var _flipped:Boolean;
+		/** @private */ protected var _flip:BitmapData;
+		/** @private */ protected static var _flips:Object = { };
 	}
 }
