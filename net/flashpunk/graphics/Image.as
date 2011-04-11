@@ -274,11 +274,15 @@
 		}
 		
 		/**
-		 * Centers the Image's originX/Y to its center.
+		 * Centers the Image's originX/Y to its center, and negates the offset by the same amount.
 		 */
 		public function centerOO():void
 		{
+			x += originX;
+			y += originY;
 			centerOrigin();
+			x -= originX;
+			y -= originY;
 		}
 		
 		/**
