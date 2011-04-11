@@ -235,28 +235,32 @@
 		{
 			if (_flipped == value) return;
 			_flipped = value;
-			var temp:BitmapData = _source;
+			var oldSource:BitmapData = _source;
 			if (_flip)
 			{
+				// Swap to the cached flip
 				_source = _flip;
-				_flip = temp;
-				updateBuffer();
 			}
-			if (_class && _flips[_class])
+			else if (_class && _flips[_class])
 			{
+				// Swap the cached flip for the source class
 				_source = _flips[_class];
-				_flip = temp;
-				updateBuffer();
 			}
-			_source = new BitmapData(_source.width, _source.height, true, 0);
-			_flip = temp;
-			FP.matrix.identity();
-			FP.matrix.a = -1;
-			FP.matrix.tx = _source.width;
-			_source.draw(temp, FP.matrix);
-			
-			if (_class) _flips[_class] = _source;
-			
+			else
+			{
+				// Create a new flip image
+				_source = new BitmapData(_source.width, _source.height, true, 0);
+				FP.matrix.identity();
+				FP.matrix.a = -1;
+				FP.matrix.tx = _source.width;
+				_source.draw(oldSource, FP.matrix);
+				if (_class)
+				{
+					// Cache the flip for other images with the same source
+					_flips[_class] = _source;
+				}
+			}
+			_flip = oldSource;
 			updateBuffer();
 		}
 		
