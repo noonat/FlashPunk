@@ -531,7 +531,7 @@ package net.flashpunk
 			if (graphic is Graphiclist) (graphic as Graphiclist).add(g);
 			else
 			{
-				var list:Graphiclist = new Graphiclist(g);
+				var list:Graphiclist = new Graphiclist();
 				if (graphic) list.add(graphic);
 				list.add(g);
 				graphic = list;
