@@ -56,6 +56,8 @@
 		 */
 		override public function updateBuffer(clearBefore:Boolean = false):void 
 		{
+			if (_width === 0 || _height === 0) return;
+			
 			// get position of the current frame
 			_rect.x = _rect.width * _frame;
 			_rect.y = uint(_rect.x / _width) * _rect.height;
