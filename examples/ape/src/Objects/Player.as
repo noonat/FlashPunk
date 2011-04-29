@@ -184,7 +184,7 @@ package Objects
 			Global.restart = true;
 		}
 		
-		public function animEnd():void { }
+		public function animEnd(spritemap:Spritemap):void { }
 		
 	}
 
