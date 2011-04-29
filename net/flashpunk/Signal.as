@@ -169,7 +169,8 @@ package net.flashpunk
 			{
 				if (_dispatching && sl.added)
 				{
-					_removed[_removed.length] = sl;
+					if (_removed == null) _removed = [sl];
+					else _removed[_removed.length] = sl;
 					sl.added = false;
 				}
 				else
