@@ -63,10 +63,11 @@ package net.flashpunk
 			{
 				if (sl.listener === listener)
 				{
-					return _listenerHead;
+					break;
 				}
+				sl = sl.next;
 			}
-			return null;
+			return sl;
 		}
 		
 		/**
