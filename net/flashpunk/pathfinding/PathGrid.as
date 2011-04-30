@@ -67,17 +67,17 @@ package net.flashpunk.pathfinding
 		 * @param x2 X coordinate of the destination node.
 		 * @param y2 Y coordinate of the destination node.
 		 * @param allowSolid True to allow the path to include solid nodes.
-		 * @param usePositions True if column and row are world coordinates.
+		 * @param usePositions True if x1, y1, x2, and y2 are world coordinates.
 		 * @return A linked list of Path objects, or null if a path to the goal
 		 *   node couldn't be found.
 		 */
-		public function findPath(x1:Number, y1:Number, x2:Number, y2:Number, entity:Entity = null, allowSolid:Boolean = false, usePositions:Boolean = true):Path
+		public function findPath(x1:Number, y1:Number, x2:Number, y2:Number, allowSolid:Boolean = false, usePositions:Boolean = true):Path
 		{
 			var node1:Node = getNode(int(x1), int(y1), usePositions);
 			var node2:Node = getNode(int(x2), int(y2), usePositions);
 			if (node1 != null && node2 != null)
 			{
-				return finder.find(node1, node2, x2, y2, entity, allowSolid);
+				return finder.find(node1, node2, x2, y2, allowSolid);
 			}
 			else return null;
 		}

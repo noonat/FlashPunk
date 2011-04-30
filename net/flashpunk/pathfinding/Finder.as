@@ -37,7 +37,7 @@ package net.flashpunk.pathfinding
 		 * @return A linked list of Path objects, or null if a path to the goal
 		 *   node couldn't be found.
 		 */
-		public function find(start:Node, goal:Node, goalX:Number, goalY:Number, entity:Entity = null, allowSolid:Boolean = false):Path
+		public function find(start:Node, goal:Node, goalX:Number, goalY:Number, allowSolid:Boolean = false):Path
 		{
 			_open.length = 0;
 			_closed = new Dictionary();
@@ -51,10 +51,6 @@ package net.flashpunk.pathfinding
 				for each (var neighbor:Node in current.neighbors)
 				{
 					if (neighbor == current || (!allowSolid && neighbor.solid && neighbor != goal))
-					{
-						continue;
-					}
-					if (entity != null && (neighbor.flags & entity.flags) != neighbor.flags)
 					{
 						continue;
 					}
