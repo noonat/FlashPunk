@@ -116,10 +116,13 @@ package net.flashpunk.components
 		public function hurt(damage:Number, hurter:Entity=null):void
 		{
 			_timer = duration;
-			if (alive && damage > 0)
+			if (alive)
 			{
-				damage = damage < _health ? damage : _health;
-				health -= damage;
+				if (damage > 0)
+				{
+					damage = damage < _health ? damage : _health;
+					health -= damage;
+				}
 				onHurt.dispatch(damage, hurter);
 				if (dead) kill(hurter);
 			}
