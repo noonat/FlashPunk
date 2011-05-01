@@ -248,6 +248,20 @@
 		}
 		
 		/**
+		 * Removes all Entities from the World at the end of the frame and recycles them.
+		 */
+		public function recycleAll():void
+		{
+			var e:Entity = _updateFirst;
+			while (e)
+			{
+				_recycle[_recycle.length] = e;
+				remove(e);
+				e = e._updateNext;
+			}
+		}
+		
+		/**
 		 * Clears stored reycled Entities of the Class type.
 		 * @param	classType		The Class type to clear.
 		 */
