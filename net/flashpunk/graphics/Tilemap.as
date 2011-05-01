@@ -405,7 +405,14 @@
 			{
 				for (var col:uint = 0; col < _columns; ++col)
 				{
-					if (solidTiles.indexOf(getTile(col, row)) !== -1)
+					var x:Number = col;
+					var y:Number = row;
+					if (usePositions)
+					{
+						x *= _tile.width;
+						y *= _tile.height;
+					}
+					if (solidTiles.indexOf(getTile(x, y)) !== -1)
 					{
 						grid.setTile(col, row, true);
 					}
