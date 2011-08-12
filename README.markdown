@@ -14,6 +14,8 @@ ADDITIONS
 - FP class:
     * Added `FP.worldTime` (seconds since world started).
     * Added `FP.time` (absolute time in seconds, from Flash's getTimer).
+- Grid class:
+    * Added grid vs grid collision test.
 - Image class:
     * Added `lock()`/`unlock()` to defer buffer updates, for a performance boost when updating many image properties.
 - Screen class:
