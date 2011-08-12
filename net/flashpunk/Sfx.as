@@ -48,8 +48,8 @@
 			if (_channel) stop();
 			_pan = FP.clamp(pan, -1, 1);
 			_vol = vol < 0 ? 0 : vol;
-			_filteredPan = FP.clamp(_pan + typePan(_type), -1, 1);
-			_filteredVol = Math.max(0, _vol * typeVolume(_type));
+			_filteredPan = FP.clamp(_pan + getPan(_type), -1, 1);
+			_filteredVol = Math.max(0, _vol * getVolume(_type));
 			_transform.pan = _filteredPan;
 			_transform.volume = _filteredVol;
 			_channel = _sound.play(0, 0, _transform);
@@ -132,7 +132,7 @@
 		{
 			if (!_channel) return;
 			if (value < 0) value = 0;
-			var filteredVol:Number = value * typeVolume(_type);
+			var filteredVol:Number = value * getVolume(_type);
 			if (filteredVol < 0) filteredVol = 0;
 			if (_filteredVol === filteredVol) return;
 			_vol = value;
@@ -148,7 +148,7 @@
 		{
 			if (!_channel) return;
 			value = FP.clamp(value, -1, 1);
-			var filteredPan:Number = FP.clamp(value + typePan(_type), -1, 1);
+			var filteredPan:Number = FP.clamp(value + getPan(_type), -1, 1);
 			if (_filteredPan === filteredPan) return;
 			_pan = value;
 			_filteredPan = _transform.pan = filteredPan;
@@ -162,6 +162,7 @@
 		public function get type():String { return _type; }
 		public function set type(value:String):void
 		{
+			if (_type == value) return;
 			if (_channel)
 			{
 				removePlaying();
@@ -195,7 +196,7 @@
 		/**
 		* Return the global pan for a type.
 		*/
-		static public function typePan(type:String):Number
+		static public function getPan(type:String):Number
 		{
 			var transform:SoundTransform = _typeTransforms[type];
 			return transform ? transform.pan : 0;
@@ -204,7 +205,7 @@
 		/**
 		* Return the global volume for a type.
 		*/
-		static public function typeVolume(type:String):Number
+		static public function getVolume(type:String):Number
 		{
 			var transform:SoundTransform = _typeTransforms[type];
 			return transform ? transform.volume : 1;
@@ -214,10 +215,10 @@
 		* Set the global pan for a type. Sfx instances of this type will add
 		* this pan to their own.
 		*/
-		static public function setTypePan(type:String, pan:Number):void
+		static public function setPan(type:String, pan:Number):void
 		{
-			var transform:SoundTransform;
-			transform = (_typeTransforms[type] ||= new SoundTransform());
+			var transform:SoundTransform = _typeTransforms[type];
+			if (!transform) transform = _typeTransforms[type] = new SoundTransform();
 			transform.pan = FP.clamp(pan, -1, 1);
 			for each (var sfx:Sfx in _typePlaying[type])
 			{
@@ -229,10 +230,10 @@
 		* Set the global volume for a type. Sfx instances of this type will
 		* multiply their volume by this value.
 		*/
-		static public function setTypeVolume(type:String, volume:Number):void
+		static public function setVolume(type:String, volume:Number):void
 		{
-			var transform:SoundTransform;
-			transform = (_typeTransforms[type] ||= new SoundTransform());
+			var transform:SoundTransform = _typeTransforms[type];
+			if (!transform) transform = _typeTransforms[type] = new SoundTransform();
 			transform.volume = volume < 0 ? 0 : volume;
 			for each (var sfx:Sfx in _typePlaying[type])
 			{
