@@ -20,6 +20,9 @@ ADDITIONS
     * Optional alpha, so you can layer other DisplayObjects under FP.
 - Sfx class:
     * Added a `minElapsed` argument to `play()` to rate limit a sound.
+    * Added a `type` property, so you can categorize sounds. You can modify
+      the volume and panning for sounds en masse via the `Sfx.setTypeVolume()`
+      and `Sfx.setTypePan()` methods.
 - Spritemap class:
     * Animations can be flipped.
     * Added an `animCount` property.
