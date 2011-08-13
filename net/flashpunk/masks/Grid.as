@@ -292,7 +292,7 @@
 				var br2:int = ((y - other.parent.y - other._y) + (th - 1)) / other._tile.height;
 				for (var x:Number = ox1; x < ox2; x += tw)
 				{
-					// Get the column indices or the left and right edges
+					// Get the column indices for the left and right edges
 					var ac1:int = (x - parent.x - _x) / _tile.width;
 					var bc1:int = (x - other.parent.x - other._x) / other._tile.width;
 					var ac2:int = ((x - parent.x - _x) + (tw - 1)) / _tile.width;
